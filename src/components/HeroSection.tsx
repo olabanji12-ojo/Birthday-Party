@@ -135,7 +135,7 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Countdown - Step 6 */}
-        <Countdown targetDate="2025-05-30T00:00:00" startDelay={3.6} />
+        <Countdown targetDate="2026-05-30T00:00:00" startDelay={3.6} />
 
         {/* RSVP Button - Step 7 */}
         <motion.div
