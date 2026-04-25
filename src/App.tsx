@@ -30,7 +30,7 @@ const App = () => {
       <main className="bg-brand-navy min-h-screen">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/admin-guestlist" element={<AdminGuestList />} />
+          <Route path="/admin" element={<AdminGuestList />} />
         </Routes>
       </main>
     </Router>
