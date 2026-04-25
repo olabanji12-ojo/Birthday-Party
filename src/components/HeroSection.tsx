@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
@@ -217,12 +217,15 @@ const CountdownItem = ({ value, label, delay }: { value: number; label: string; 
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest).toString().padStart(2, "0"));
 
+  const isFirstRender = useRef(true);
+
   useEffect(() => {
     const animation = animate(count, value, {
-      duration: 0.8,
-      delay: delay,
+      duration: isFirstRender.current ? 0.8 : 0.4,
+      delay: isFirstRender.current ? delay : 0,
       ease: "easeOut",
     });
+    isFirstRender.current = false;
     return animation.stop;
   }, [value, count, delay]);
 
