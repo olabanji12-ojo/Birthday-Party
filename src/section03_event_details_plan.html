@@ -1,0 +1,239 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.doc { max-width: 660px; margin: 0 auto; padding: 1.5rem 1rem 3rem; font-family: var(--font-sans); }
+.header { background: #0a0e2e; border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; border: 0.5px solid #c9a84c; display: flex; align-items: center; justify-content: space-between; }
+.header-text h1 { color: #c9a84c; font-size: 15px; font-weight: 500; }
+.header-text p { color: #a89060; font-size: 12px; margin-top: 3px; }
+.badge { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 99px; background: rgba(201,168,76,0.15); color: #c9a84c; border: 0.5px solid #c9a84c; white-space: nowrap; }
+.section { margin-bottom: 1.25rem; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+.sec-head { background: var(--color-background-secondary); padding: 9px 16px; font-size: 12px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.sec-body { padding: 14px 16px; }
+.tag { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 99px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); background: var(--color-background-secondary); margin: 2px 2px 0 0; }
+.highlight { color: #c9a84c; font-weight: 500; }
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 10px 0; }
+.note { background: var(--color-background-info); border-radius: var(--border-radius-md); padding: 10px 14px; font-size: 12px; color: var(--color-text-info); margin-top: 10px; }
+.mockup-wrap { background: #0a0e2e; border-radius: var(--border-radius-lg); padding: 20px; }
+.mock-section-label { font-size: 10px; color: #a89060; text-transform: uppercase; letter-spacing: 0.1em; text-align: center; margin-bottom: 6px; }
+.mock-heading-bar { height: 14px; width: 200px; background: rgba(201,168,76,0.2); border-radius: 3px; margin: 0 auto 16px; }
+.cards-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.mock-card { background: rgba(255,255,255,0.05); border: 0.5px solid rgba(201,168,76,0.4); border-radius: 12px; padding: 14px 12px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.mock-icon { width: 32px; height: 32px; border-radius: 50%; background: rgba(201,168,76,0.15); border: 0.5px solid #c9a84c; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+.mock-card-label { height: 7px; width: 60%; background: rgba(201,168,76,0.3); border-radius: 2px; }
+.mock-card-value { height: 10px; width: 80%; background: rgba(245,230,192,0.2); border-radius: 2px; }
+.mock-card-sub { height: 7px; width: 55%; background: rgba(245,230,192,0.1); border-radius: 2px; }
+.mock-map { background: rgba(255,255,255,0.04); border: 0.5px solid rgba(201,168,76,0.3); border-radius: 12px; height: 90px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.mock-map-grid { position: absolute; inset: 0; opacity: 0.15; background-image: linear-gradient(rgba(201,168,76,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.5) 1px, transparent 1px); background-size: 20px 20px; }
+.mock-map-pin { width: 16px; height: 20px; position: relative; z-index: 2; }
+.mock-map-pin-head { width: 16px; height: 16px; background: #c9a84c; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); }
+.mock-map-pin-dot { width: 6px; height: 6px; background: #0a0e2e; border-radius: 50%; position: absolute; top: 5px; left: 5px; }
+.mock-btn { background: rgba(201,168,76,0.15); border: 0.5px solid #c9a84c; border-radius: 99px; padding: 5px 14px; font-size: 10px; color: #c9a84c; text-align: center; margin-top: 8px; width: fit-content; margin-left: auto; margin-right: auto; }
+.anim-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.anim-item:last-child { border-bottom: none; padding-bottom: 0; }
+.anim-num { width: 24px; height: 24px; border-radius: 50%; background: #0a0e2e; border: 0.5px solid #c9a84c; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: #c9a84c; flex-shrink: 0; margin-top: 1px; }
+.anim-content { flex: 1; }
+.anim-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+.anim-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
+.anim-timing { font-size: 11px; color: var(--color-text-tertiary); font-style: italic; margin-top: 3px; }
+.prompt-box { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; font-size: 13px; color: var(--color-text-primary); line-height: 1.8; white-space: pre-wrap; word-break: break-word; }
+.copy-hint { font-size: 12px; color: var(--color-text-tertiary); margin-top: 8px; text-align: right; }
+</style>
+
+<div class="doc">
+
+  <div class="header">
+    <div class="header-text">
+      <h1>Section 03 — Event Details</h1>
+      <p>3 gold cards · Map embed · Directions button · Stagger animation</p>
+    </div>
+    <span class="badge">Section 03</span>
+  </div>
+
+  <!-- Layout Mockup -->
+  <div class="section">
+    <div class="sec-head">Layout Mockup</div>
+    <div class="sec-body" style="padding: 0;">
+      <div class="mockup-wrap">
+        <div class="mock-section-label">Event Details</div>
+        <div class="mock-heading-bar"></div>
+        <div class="cards-row">
+          <div class="mock-card">
+            <div class="mock-icon">📅</div>
+            <div class="mock-card-label"></div>
+            <div class="mock-card-value"></div>
+            <div class="mock-card-sub"></div>
+          </div>
+          <div class="mock-card">
+            <div class="mock-icon">🕐</div>
+            <div class="mock-card-label"></div>
+            <div class="mock-card-value"></div>
+            <div class="mock-card-sub"></div>
+          </div>
+          <div class="mock-card">
+            <div class="mock-icon">📍</div>
+            <div class="mock-card-label"></div>
+            <div class="mock-card-value"></div>
+            <div class="mock-card-sub"></div>
+          </div>
+        </div>
+        <div class="mock-map">
+          <div class="mock-map-grid"></div>
+          <div class="mock-map-pin">
+            <div class="mock-map-pin-head">
+              <div class="mock-map-pin-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-btn">Get Directions →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What's In The Section -->
+  <div class="section">
+    <div class="sec-head">What's In This Section</div>
+    <div class="sec-body">
+      <div style="display:flex; gap:16px;">
+        <div style="flex:1;">
+          <div style="font-size:12px; font-weight:500; color:var(--color-text-secondary); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.04em;">3 Info Cards</div>
+          <div style="font-size:12px; color:var(--color-text-secondary); line-height:1.8;">
+            Card 1 — Date<br>
+            Icon: calendar · Label: "Date" · Value: "October 17" · Sub: "2025"<br><br>
+            Card 2 — Time<br>
+            Icon: clock · Label: "Time" · Value: "TBA" · Sub: "To be announced"<br><br>
+            Card 3 — Venue<br>
+            Icon: pin · Label: "Venue" · Value: "Lagos Country Club" · Sub: "Lagos, Nigeria"
+          </div>
+        </div>
+        <div style="width:0.5px; background:var(--color-border-tertiary);"></div>
+        <div style="flex:1;">
+          <div style="font-size:12px; font-weight:500; color:var(--color-text-secondary); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.04em;">Map + Button</div>
+          <div style="font-size:12px; color:var(--color-text-secondary); line-height:1.8;">
+            Google Maps iframe embed<br>
+            Spans full width below the 3 cards<br>
+            Height: 300px, border-radius: 16px<br>
+            Gold border: 1px solid rgba(201,168,76,0.4)<br><br>
+            "Get Directions" button below map<br>
+            Opens Google Maps in new tab<br>
+            Style: gold outlined pill button
+          </div>
+        </div>
+      </div>
+      <div class="note">On mobile: cards stack vertically (1 column). Map goes full width below. Button centered.</div>
+    </div>
+  </div>
+
+  <!-- Animations -->
+  <div class="section">
+    <div class="sec-head">Animation Plan — Scroll Triggered</div>
+    <div class="sec-body">
+      <div class="anim-item">
+        <div class="anim-num">1</div>
+        <div class="anim-content">
+          <div class="anim-title">Section label + heading fades up from center</div>
+          <div class="anim-desc">"Event Details" label and the section heading both fade in and drift up from y:20→0. Centered text, feels like the section is waking up.</div>
+          <div class="anim-timing">whileInView · y:20→0, opacity:0→1 · duration:0.6s · easing:easeOut</div>
+        </div>
+      </div>
+      <div class="anim-item">
+        <div class="anim-num">2</div>
+        <div class="anim-content">
+          <div class="anim-title">3 cards stagger in left to right</div>
+          <div class="anim-desc">Card 1 (Date) slides up first, then Card 2 (Time), then Card 3 (Venue). Each card: y:40→0, opacity:0→1. 0.15s stagger between each card. Feels like they're being dealt onto the table one by one.</div>
+          <div class="anim-timing">staggerChildren:0.15s · each card: y:40→0, opacity:0→1 · duration:0.5s · spring easing</div>
+        </div>
+      </div>
+      <div class="anim-item">
+        <div class="anim-num">3</div>
+        <div class="anim-content">
+          <div class="anim-title">Card icons pulse once on entry</div>
+          <div class="anim-desc">After each card appears, its icon does a single quick scale pulse — scale 1→1.2→1 over 0.3s. Like each card is "announcing" itself. Subtle but adds life.</div>
+          <div class="anim-timing">Framer Motion onAnimationComplete · scale:1→1.2→1 · duration:0.3s · once only</div>
+        </div>
+      </div>
+      <div class="anim-item">
+        <div class="anim-num">4</div>
+        <div class="anim-content">
+          <div class="anim-title">Map slides up and fades in</div>
+          <div class="anim-desc">The map iframe and directions button slide up together (y:30→0, opacity:0→1) after the cards have appeared. Delay of 0.5s after cards finish so it feels like a natural continuation.</div>
+          <div class="anim-timing">whileInView · y:30→0, opacity:0→1 · duration:0.6s · delay:0.5s after cards</div>
+        </div>
+      </div>
+      <div class="anim-item">
+        <div class="anim-num">5</div>
+        <div class="anim-content">
+          <div class="anim-title">Card hover — gold glow lift</div>
+          <div class="anim-desc">On hover each card lifts slightly (y:-4) and the gold border brightens (border-color: #c9a84c full opacity). Gives a premium "interactive card" feel without being distracting.</div>
+          <div class="anim-timing">whileHover · y:-4 · border brightens · transition:0.25s ease</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prompt -->
+  <div class="section">
+    <div class="sec-head">The Prompt — Copy & Paste Into Claude</div>
+    <div class="sec-body">
+      <div class="prompt-box"><span class="highlight">You are building Section 03 (Event Details) of the birthday website.</span> Refer to the project brief for colors, fonts, and design system. Build this as a standalone React component called EventDetailsSection.
+
+<span class="highlight">LAYOUT:</span>
+Full-width section, bg: #111530, py-24. Centered content max-width 1100px. Three parts stacked vertically: section heading → 3 cards row → map + button.
+
+<span class="highlight">SECTION HEADING (centered):</span>
+— Small gold label: "Event Details" (Inter, 12px, #c9a84c, letter-spacing: 0.12em, uppercase)
+— Main heading below: "Join Us for the Celebration" (Cormorant Garamond, clamp 36px–52px, #f5e6c0)
+— Thin gold divider centered below heading: width 60px, height 2px, bg #c9a84c, mx-auto, mb-12
+
+<span class="highlight">3 CARDS (side by side, equal width, gap: 20px):</span>
+Each card style: bg rgba(255,255,255,0.04), border: 1px solid rgba(201,168,76,0.35), border-radius: 20px, padding: 32px 24px, text-align: center, display flex flex-col align-items center gap-4.
+
+Card 1 — Date:
+— Icon: circular gold container (w-14 h-14, bg rgba(201,168,76,0.12), border: 1px solid #c9a84c, border-radius 50%) with a calendar SVG icon inside in gold
+— Label: "Date" (Inter, 12px, #c9a84c, uppercase, letter-spacing 0.1em)
+— Value: "October 17" (Cormorant Garamond, 32px, #f5e6c0, font-weight 600)
+— Sub: "2025" (Inter, 14px, rgba(245,230,192,0.5))
+
+Card 2 — Time:
+— Same icon container with a clock SVG icon
+— Label: "Time"
+— Value: "TBA" (Cormorant Garamond, 32px, #f5e6c0)
+— Sub: "To be announced" (Inter, 14px, rgba(245,230,192,0.5))
+
+Card 3 — Venue:
+— Same icon container with a location pin SVG icon
+— Label: "Venue"
+— Value: "Lagos Country Club" (Cormorant Garamond, 28px, #f5e6c0)
+— Sub: "Lagos, Nigeria" (Inter, 14px, rgba(245,230,192,0.5))
+
+<span class="highlight">MAP + DIRECTIONS (below cards, mt-12):</span>
+— Google Maps iframe: src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7!2d3.4299!3d6.4281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sLagos+Country+Club!5e0!3m2!1sen!2sng!4v1"
+— width: 100%, height: 300px, border: none, border-radius: 16px, outline: 1px solid rgba(201,168,76,0.4)
+— Wrap iframe in a div with border-radius:16px, overflow:hidden, border: 1px solid rgba(201,168,76,0.3)
+— "Get Directions" button below map (mt-6, mx-auto, block):
+  Style: bg transparent, border: 1px solid #c9a84c, color: #c9a84c, px-8 py-3, border-radius 99px, Inter font, 14px, hover: bg #c9a84c, color #0a0e2e, transition 0.3s
+  onClick: window.open("https://maps.google.com/?q=Lagos+Country+Club+Lagos+Nigeria", "_blank")
+
+<span class="highlight">ANIMATIONS (Framer Motion whileInView, viewport once:true):</span>
+
+Step 1 — Heading block: y:20→0, opacity:0→1, duration:0.6s, easeOut
+Step 2 — 3 cards stagger: staggerChildren:0.15s, each card y:40→0, opacity:0→1, duration:0.5s, spring(stiffness:120, damping:14)
+Step 3 — Card icon pulse on entry: onAnimationComplete fires scale 1→1.2→1, duration:0.3s, once only per card
+Step 4 — Map + button: y:30→0, opacity:0→1, duration:0.6s, delay:0.5s after cards
+Step 5 — Card whileHover: y:-4, transition:0.25s ease. Also brighten border on hover via inline style toggle.
+
+<span class="highlight">MOBILE RESPONSIVE:</span>
+— Below md: cards stack single column, full width
+— Map stays full width
+— Button centered
+— Reduce heading font size
+
+<span class="highlight">IMPORTANT:</span>
+— Export as default: EventDetailsSection
+— No white backgrounds anywhere
+— Use placeholder content — all swappable later
+— Do not add other sections</div>
+      <div class="copy-hint">Paste after project brief in a new Claude message</div>
+    </div>
+  </div>
+
+</div>
