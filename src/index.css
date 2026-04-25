@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-navy: #0a0e2e;
+  --color-brand-navy-light: #111530;
+  --color-brand-gold: #c9a84c;
+  --color-brand-gold-light: #e8c96d;
+  --color-brand-gold-pale: #f5e6c0;
+
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-playfair: "Playfair Display", serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-navy text-white font-inter;
+  }
+}
