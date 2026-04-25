@@ -1,6 +1,7 @@
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import EventDetailsSection from "./components/EventDetailsSection";
+import ThemeSection from "./components/ThemeSection";
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <HeroSection />
       <AboutSection />
       <EventDetailsSection />
+      <ThemeSection />
     </main>
   );
 };
