@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { firePoppers } from "../utils/firePoppers";
+import { db } from "../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import VirtualTicket from "./VirtualTicket";
 
 const RSVPSection = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [ticketId, setTicketId] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -14,15 +19,30 @@ const RSVPSection = () => {
     songRequest: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("RSVP Submitted:", formData);
-    
-    // Trigger Success State
-    setSubmitted(true);
-    
-    // Trigger Celebration!
-    firePoppers("rsvp");
+    setIsSubmitting(true);
+
+    try {
+      // Save to Firebase
+      const docRef = await addDoc(collection(db, "rsvps"), {
+        ...formData,
+        submittedAt: serverTimestamp(),
+      });
+
+      setTicketId(docRef.id);
+
+      // Trigger Success State
+      setSubmitted(true);
+      
+      // Trigger Celebration!
+      firePoppers("rsvp");
+    } catch (error) {
+      console.error("Error submitting RSVP:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const containerVariants: Variants = {
@@ -182,12 +202,15 @@ const RSVPSection = () => {
                   {/* Submit */}
                   <motion.div variants={itemVariants} className="mt-4">
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                      whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                       type="submit"
-                      className="w-full bg-brand-gold text-brand-navy py-5 rounded-full font-inter font-bold tracking-widest uppercase transition-all shadow-[0_10px_20px_-10px_rgba(201,168,76,0.3)] hover:brightness-110 active:scale-95"
+                      disabled={isSubmitting}
+                      className={`w-full bg-brand-gold text-brand-navy py-5 rounded-full font-inter font-bold tracking-widest uppercase transition-all shadow-[0_10px_20px_-10px_rgba(201,168,76,0.3)] hover:brightness-110 active:scale-95 ${
+                        isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+                      }`}
                     >
-                      Confirm Attendance
+                      {isSubmitting ? "Processing..." : "Confirm Attendance"}
                     </motion.button>
                   </motion.div>
                 </form>
@@ -204,8 +227,12 @@ const RSVPSection = () => {
                 🎉 You’re on the list!
               </h2>
               <p className="font-inter text-brand-gold-pale/80 text-lg md:text-xl max-w-[500px] mx-auto leading-relaxed">
-                Thank you for confirming your attendance. We can't wait to celebrate this milestone with you!
+                Thank you for confirming your attendance. Below is your official virtual invitation.
               </p>
+
+              {/* Virtual Ticket Component */}
+              <VirtualTicket guestName={formData.fullName} ticketId={ticketId} />
+
               <div className="mt-12">
                 <p className="font-cormorant italic text-brand-gold-pale/40 text-sm tracking-widest">
                   See you on October 17th
