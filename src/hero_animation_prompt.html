@@ -1,0 +1,199 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.doc { max-width: 660px; margin: 0 auto; padding: 1.5rem 1rem 3rem; font-family: var(--font-sans); }
+.header { background: #0a0e2e; border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; border: 0.5px solid #c9a84c; display: flex; align-items: center; justify-content: space-between; }
+.header h1 { color: #c9a84c; font-size: 15px; font-weight: 500; }
+.header p { color: #a89060; font-size: 12px; margin-top: 3px; }
+.badge { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 99px; background: rgba(201,168,76,0.15); color: #c9a84c; border: 0.5px solid #c9a84c; }
+.section { margin-bottom: 1.25rem; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+.sec-head { background: var(--color-background-secondary); padding: 9px 16px; font-size: 12px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.sec-body { padding: 14px 16px; }
+.seq { display: flex; flex-direction: column; gap: 0; }
+.seq-item { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.seq-item:last-child { border-bottom: none; padding-bottom: 0; }
+.seq-num { width: 28px; height: 28px; border-radius: 50%; background: #0a0e2e; border: 0.5px solid #c9a84c; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #c9a84c; flex-shrink: 0; margin-top: 1px; }
+.seq-content { flex: 1; }
+.seq-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+.seq-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 5px; }
+.seq-timing { font-size: 11px; color: var(--color-text-tertiary); font-style: italic; }
+.tag { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 99px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); background: var(--color-background-secondary); margin: 2px 2px 0 0; }
+.prompt-box { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; font-size: 13px; color: var(--color-text-primary); line-height: 1.8; white-space: pre-wrap; word-break: break-word; }
+.prompt-box .highlight { color: #c9a84c; font-weight: 500; }
+.copy-hint { font-size: 12px; color: var(--color-text-tertiary); margin-top: 8px; text-align: right; }
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 12px 0; }
+.note { background: var(--color-background-info); border-radius: var(--border-radius-md); padding: 10px 14px; font-size: 12px; color: var(--color-text-info); margin-top: 10px; }
+</style>
+
+<div class="doc">
+
+  <div class="header">
+    <div>
+      <h1>Hero Section — Animation Prompt</h1>
+      <p>Cinematic sequence · 7 steps · ~4 seconds total</p>
+    </div>
+    <span class="badge">Section 01</span>
+  </div>
+
+  <!-- Animation Sequence -->
+  <div class="section">
+    <div class="sec-head">Cinematic Sequence — What Happens & When</div>
+    <div class="sec-body">
+      <div class="seq">
+
+        <div class="seq-item">
+          <div class="seq-num">1</div>
+          <div class="seq-content">
+            <div class="seq-title">Background Photo Reveals</div>
+            <div class="seq-desc">Page loads black. Celebrant's photo slowly fades in from black (opacity 0 → 1) while simultaneously zooming in very slightly (scale 1.05 → 1.0). A dark navy overlay sits on top at 60% opacity so text stays readable. This takes 1.2 seconds.</div>
+            <div class="seq-timing">⏱ Starts: 0s · Duration: 1.2s · Easing: ease-out</div>
+          </div>
+        </div>
+
+        <div class="seq-item">
+          <div class="seq-num">2</div>
+          <div class="seq-content">
+            <div class="seq-title">Gold Bokeh Particles Burst</div>
+            <div class="seq-desc">While the photo is still fading in, tsParticles fires a burst of gold sparkle/bokeh particles from the center of the screen. Particles scatter outward and slowly drift upward, fading out. Feels like gold dust catching light. Stays active as a subtle ambient effect throughout.</div>
+            <div class="seq-timing">⏱ Starts: 0.4s · Duration: burst lasts 1s, ambient particles stay · Easing: physics-based</div>
+            <div style="margin-top: 6px;"><span class="tag">tsParticles</span><span class="tag">color: #c9a84c + #e8c96d</span><span class="tag">move direction: top</span><span class="tag">opacity: fade out</span></div>
+          </div>
+        </div>
+
+        <div class="seq-item">
+          <div class="seq-num">3</div>
+          <div class="seq-content">
+            <div class="seq-title">"You are cordially invited" Fades In</div>
+            <div class="seq-desc">The small subtitle text above the name gently fades in as a whole line (opacity 0 → 1, slight upward drift from y+10 → y0). Font: Inter, small, white, letter-spacing wide. Elegant and understated — sets the stage before the name drops.</div>
+            <div class="seq-timing">⏱ Starts: 1.0s · Duration: 0.6s · Easing: ease-out</div>
+            <div style="margin-top: 6px;"><span class="tag">Framer Motion</span><span class="tag">initial: opacity 0, y 10</span><span class="tag">animate: opacity 1, y 0</span></div>
+          </div>
+        </div>
+
+        <div class="seq-item">
+          <div class="seq-num">4</div>
+          <div class="seq-content">
+            <div class="seq-title">Name Reveals Letter by Letter</div>
+            <div class="seq-desc">
+              "SOLOMON OLUSEGUN OJO" appears letter by letter. Each character slides up from y+20 to y0 while fading in (opacity 0 → 1). Stagger delay of 0.04s between each letter. Font: Cormorant Garamond, very large (clamp between 48px mobile and 96px desktop), white/cream color. Spaces between words have a slightly longer delay (0.08s) to create a natural pause between words.
+            </div>
+            <div class="seq-timing">⏱ Starts: 1.6s · Duration: ~1.5s total for full name · Per letter: 0.04s stagger</div>
+            <div style="margin-top: 6px;"><span class="tag">Framer Motion</span><span class="tag">split name into array of chars</span><span class="tag">staggerChildren: 0.04</span><span class="tag">each char: y 20→0, opacity 0→1</span></div>
+          </div>
+        </div>
+
+        <div class="seq-item">
+          <div class="seq-num">5</div>
+          <div class="seq-content">
+            <div class="seq-title">@70 Scales Up With Gold Flash</div>
+            <div class="seq-desc">After the name finishes, "@70" dramatically scales up from scale(0.3) to scale(1.0) while fading in. At the peak of the animation, a brief golden glow/flash effect pulses once (text-shadow or filter brightness spike) then settles. Font: Cormorant Garamond, even larger than the name, color: #c9a84c gold. This is the BIG moment — the number should feel like a stamp landing.</div>
+            <div class="seq-timing">⏱ Starts: after name finishes (~3.1s) · Duration: 0.5s scale-up + 0.3s flash · Easing: spring(stiffness: 200, damping: 15)</div>
+            <div style="margin-top: 6px;"><span class="tag">Framer Motion</span><span class="tag">initial: scale 0.3, opacity 0</span><span class="tag">animate: scale 1, opacity 1</span><span class="tag">then: brightness flash keyframe</span></div>
+          </div>
+        </div>
+
+        <div class="seq-item">
+          <div class="seq-num">6</div>
+          <div class="seq-content">
+            <div class="seq-title">Countdown Timer Counts Up</div>
+            <div class="seq-desc">The countdown boxes appear (slide up + fade in all together). Then instead of immediately showing the real countdown number, each number animates from 00 counting up rapidly to its real value (like a slot machine). Days, Hours, Minutes, Seconds each count up with a slight stagger between boxes. After counting up, they tick normally in real time.</div>
+            <div class="seq-timing">⏱ Starts: 3.6s · Boxes appear: 0.4s · Count-up animation: 0.8s per unit · Easing: ease-out</div>
+            <div style="margin-top: 6px;"><span class="tag">Framer Motion</span><span class="tag">useMotionValue for number</span><span class="tag">animate 0 → real value</span><span class="tag">then setInterval for live tick</span></div>
+          </div>
+        </div>
+
+        <div class="seq-item">
+          <div class="seq-num">7</div>
+          <div class="seq-content">
+            <div class="seq-title">RSVP Button Slides Up + Pulses</div>
+            <div class="seq-desc">The gold RSVP button slides up from below (y+30 → y0) and fades in. After appearing, it enters a subtle infinite pulse animation — a very gentle scale oscillation (1.0 → 1.03 → 1.0) every 2 seconds — drawing attention without being aggressive. Button style: gold background (#c9a84c), dark navy text, rounded, slight gold glow on hover.</div>
+            <div class="seq-timing">⏱ Starts: 4.2s · Slide-up: 0.5s · Pulse: infinite loop every 2s · Easing: easeInOut</div>
+            <div style="margin-top: 6px;"><span class="tag">Framer Motion</span><span class="tag">animate: y 30→0, opacity 0→1</span><span class="tag">then: animate scale 1→1.03 repeat: Infinity</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- The Actual Prompt -->
+  <div class="section">
+    <div class="sec-head">The Prompt — Copy & Paste This Into Claude</div>
+    <div class="sec-body">
+      <div class="prompt-box"><span class="highlight">You are building Section 01 (Hero) of a birthday celebration website.</span> Read the project brief already provided. Now implement the Hero section as a standalone React component with the following cinematic animation sequence. Each animation must complete before the next begins — this is a sequential reveal, not simultaneous.
+
+<span class="highlight">TECH STACK:</span> React, Tailwind CSS, Framer Motion, tsParticles (@tsparticles/react + @tsparticles/slim)
+
+<span class="highlight">ANIMATION SEQUENCE (in strict order):</span>
+
+<span class="highlight">Step 1 — Background (0s, 1.2s duration):</span>
+Full-screen photo background fades in from black (opacity 0→1) and zooms out slightly (scale 1.05→1.0). Use a placeholder Unsplash image for now. Dark navy overlay at 60% opacity sits on top. Easing: ease-out.
+
+<span class="highlight">Step 2 — Gold Particles (0.4s, ambient):</span>
+Fire tsParticles burst from screen center. Gold particles (#c9a84c, #e8c96d) scatter outward and drift upward, fading out. Keep a subtle ambient particle layer active throughout. Config: move direction "top", opacity fades to 0, size 2-4px.
+
+<span class="highlight">Step 3 — Subtitle (1.0s, 0.6s duration):</span>
+"You are cordially invited" fades in as a whole line. Framer Motion: initial opacity 0 + y:10, animate to opacity 1 + y:0. Font: Inter, small, white, wide letter-spacing.
+
+<span class="highlight">Step 4 — Name Letter by Letter (1.6s, ~1.5s total):</span>
+"SOLOMON OLUSEGUN OJO" reveals character by character. Split the string into an array of characters. Each character: initial y:20 opacity:0, animate to y:0 opacity:1. Use Framer Motion staggerChildren: 0.04s. Spaces get a 0.08s stagger delay. Font: Cormorant Garamond, font-size clamp(48px, 8vw, 96px), color white/cream (#f5e6c0).
+
+<span class="highlight">Step 5 — @70 Scale Stamp (after name ~3.1s, 0.8s duration):</span>
+"@70" scales from scale(0.3)+opacity:0 to scale(1)+opacity:1 using Framer Motion spring (stiffness:200, damping:15). After landing, trigger a single brightness flash keyframe animation (brightness 1→1.8→1 over 0.3s). Font: Cormorant Garamond, larger than name, color: #c9a84c gold.
+
+<span class="highlight">Step 6 — Countdown Counts Up (3.6s):</span>
+All 4 countdown boxes (DAYS, HOURS, MINUTES, SECONDS) slide up + fade in together. Then each number animates from 0 to its real value using useMotionValue + animate(). Stagger boxes by 0.15s. After counting up, switch to a setInterval that ticks down live every second toward October 17, 2025.
+
+<span class="highlight">Step 7 — RSVP Button (4.2s):</span>
+Button slides up (y:30→0) and fades in (opacity:0→1) over 0.5s. After appearing, loop a subtle pulse: animate scale 1→1.03→1 every 2s, repeat Infinity, easing easeInOut. Style: bg #c9a84c, text #0a0e2e, rounded-full, px-10 py-4, hover: brightness-110.
+
+<span class="highlight">IMPORTANT NOTES:</span>
+— Use Framer Motion's useAnimate or variants with delay chaining to enforce strict sequential order
+— All animation delays are from page mount (time 0 = component mounts)
+— The component should be mobile-first and fully responsive
+— Export as default: HeroSection
+— Do not add any other sections — Hero only
+— Use placeholder content: name, date, venue from the brief</div>
+      <div class="copy-hint">Select all text above → Copy → Paste into Claude after your project brief</div>
+    </div>
+  </div>
+
+  <!-- Timeline Visual -->
+  <div class="section">
+    <div class="sec-head">Animation Timeline at a Glance</div>
+    <div class="sec-body">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 11px; color: var(--color-text-tertiary); min-width: 38px;">0.0s</span>
+          <div style="flex:1; background: #0a0e2e; border: 0.5px solid #c9a84c; border-radius: 4px; padding: 5px 10px; font-size: 12px; color: #c9a84c;">Background fades in + zooms</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 11px; color: var(--color-text-tertiary); min-width: 38px;">0.4s</span>
+          <div style="flex:1; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); border-radius: 4px; padding: 5px 10px; font-size: 12px; color: var(--color-text-primary);">Gold particles burst + ambient</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 11px; color: var(--color-text-tertiary); min-width: 38px;">1.0s</span>
+          <div style="flex:1; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); border-radius: 4px; padding: 5px 10px; font-size: 12px; color: var(--color-text-primary);">"You are cordially invited" fades in</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 11px; color: var(--color-text-tertiary); min-width: 38px;">1.6s</span>
+          <div style="flex:1; background: #0a0e2e; border: 0.5px solid #c9a84c; border-radius: 4px; padding: 5px 10px; font-size: 12px; color: #f5e6c0;">S — O — L — O — M — O — N ... letter by letter</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 11px; color: var(--color-text-tertiary); min-width: 38px;">3.1s</span>
+          <div style="flex:1; background: #0a0e2e; border: 0.5px solid #c9a84c; border-radius: 4px; padding: 5px 10px; font-size: 12px; color: #c9a84c; font-weight: 500;">@70 STAMPS IN 💥 gold flash</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 11px; color: var(--color-text-tertiary); min-width: 38px;">3.6s</span>
+          <div style="flex:1; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); border-radius: 4px; padding: 5px 10px; font-size: 12px; color: var(--color-text-primary);">Countdown boxes appear → count up to real values</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 11px; color: var(--color-text-tertiary); min-width: 38px;">4.2s</span>
+          <div style="flex:1; background: #0a0e2e; border: 0.5px solid #c9a84c; border-radius: 4px; padding: 5px 10px; font-size: 12px; color: #c9a84c;">RSVP button slides up → pulses forever</div>
+        </div>
+      </div>
+      <div class="note" style="margin-top: 12px;">Total reveal time: ~4.7 seconds from page load. Guests see a full cinematic opening before anything is interactive.</div>
+    </div>
+  </div>
+
+</div>

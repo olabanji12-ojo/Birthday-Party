@@ -1,0 +1,253 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.doc { max-width: 660px; margin: 0 auto; padding: 1.5rem 1rem 3rem; font-family: var(--font-sans); }
+.header { background: #0a0e2e; border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; border: 0.5px solid #c9a84c; display: flex; align-items: center; justify-content: space-between; }
+.header-text h1 { color: #c9a84c; font-size: 15px; font-weight: 500; }
+.header-text p { color: #a89060; font-size: 12px; margin-top: 3px; }
+.badge { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 99px; background: rgba(201,168,76,0.15); color: #c9a84c; border: 0.5px solid #c9a84c; white-space: nowrap; }
+.section { margin-bottom: 1.25rem; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+.sec-head { background: var(--color-background-secondary); padding: 9px 16px; font-size: 12px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.sec-body { padding: 14px 16px; }
+.tag { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 99px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); background: var(--color-background-secondary); margin: 2px 2px 0 0; }
+.highlight { color: #c9a84c; font-weight: 500; }
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 10px 0; }
+.note { background: var(--color-background-info); border-radius: var(--border-radius-md); padding: 10px 14px; font-size: 12px; color: var(--color-text-info); margin-top: 10px; }
+
+/* Layout mockup */
+.mockup-wrap { background: #0a0e2e; border-radius: var(--border-radius-lg); padding: 20px; margin-bottom: 0; }
+.mockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.left-col { display: flex; flex-direction: column; gap: 12px; justify-content: center; padding: 8px 0; }
+.mock-label { font-size: 10px; color: #a89060; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.mock-section-tag { display: inline-block; font-size: 10px; color: #c9a84c; border-bottom: 0.5px solid #c9a84c; padding-bottom: 2px; margin-bottom: 8px; letter-spacing: 0.1em; }
+.mock-heading { background: rgba(201,168,76,0.15); border-radius: 3px; height: 10px; margin-bottom: 6px; }
+.mock-heading.lg { height: 16px; width: 85%; }
+.mock-heading.md { height: 10px; width: 70%; }
+.mock-heading.sm { height: 8px; width: 90%; }
+.mock-heading.sm2 { height: 8px; width: 75%; }
+.mock-heading.sm3 { height: 8px; width: 82%; }
+.mock-divider { height: 0.5px; background: #c9a84c; opacity: 0.3; width: 40px; margin: 4px 0; }
+.mock-quote { background: rgba(201,168,76,0.08); border-left: 2px solid #c9a84c; border-radius: 0 4px 4px 0; padding: 8px 10px; }
+.mock-quote-line { height: 7px; background: rgba(245,230,192,0.2); border-radius: 2px; margin-bottom: 5px; }
+.mock-quote-line:last-child { width: 60%; margin-bottom: 0; }
+.bento-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; height: 200px; }
+.bento-1 { grid-column: 1; grid-row: 1 / 3; background: rgba(255,255,255,0.08); border-radius: 8px; border: 0.5px solid rgba(201,168,76,0.3); overflow: hidden; position: relative; }
+.bento-2 { grid-column: 2; grid-row: 1; background: rgba(255,255,255,0.08); border-radius: 8px; border: 0.5px solid rgba(201,168,76,0.3); overflow: hidden; }
+.bento-3 { grid-column: 2; grid-row: 2; background: rgba(255,255,255,0.08); border-radius: 8px; border: 0.5px solid rgba(201,168,76,0.3); overflow: hidden; position: relative; }
+.bento-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+.bento-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 8px; background: linear-gradient(transparent, rgba(10,14,46,0.8)); }
+.bento-tag-pill { display: inline-block; font-size: 9px; padding: 2px 6px; background: rgba(201,168,76,0.2); color: #c9a84c; border-radius: 99px; border: 0.5px solid #c9a84c; }
+
+/* Animation list */
+.anim-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.anim-item:last-child { border-bottom: none; padding-bottom: 0; }
+.anim-num { width: 24px; height: 24px; border-radius: 50%; background: #0a0e2e; border: 0.5px solid #c9a84c; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: #c9a84c; flex-shrink: 0; }
+.anim-content { flex: 1; }
+.anim-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+.anim-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
+.anim-timing { font-size: 11px; color: var(--color-text-tertiary); font-style: italic; margin-top: 3px; }
+
+/* Prompt */
+.prompt-box { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; font-size: 13px; color: var(--color-text-primary); line-height: 1.8; white-space: pre-wrap; word-break: break-word; }
+.copy-hint { font-size: 12px; color: var(--color-text-tertiary); margin-top: 8px; text-align: right; }
+</style>
+
+<div class="doc">
+
+  <div class="header">
+    <div class="header-text">
+      <h1>Section 02 — About Him</h1>
+      <p>Text left · Bento grid right · 3 photos · Scroll-triggered animations</p>
+    </div>
+    <span class="badge">Section 02</span>
+  </div>
+
+  <!-- Layout Mockup -->
+  <div class="section">
+    <div class="sec-head">Layout Mockup</div>
+    <div class="sec-body" style="padding: 0;">
+      <div class="mockup-wrap">
+        <div class="mockup-grid">
+
+          <!-- Left: Text -->
+          <div class="left-col">
+            <div>
+              <div class="mock-section-tag">ABOUT THE CELEBRANT</div>
+              <div class="mock-heading lg"></div>
+              <div class="mock-heading" style="height:12px; width:60%; background: rgba(201,168,76,0.4);"></div>
+              <div class="mock-divider"></div>
+            </div>
+            <div>
+              <div class="mock-heading sm"></div>
+              <div class="mock-heading sm2"></div>
+              <div class="mock-heading sm3"></div>
+              <div class="mock-heading sm" style="width:65%;"></div>
+            </div>
+            <div class="mock-quote">
+              <div class="mock-quote-line"></div>
+              <div class="mock-quote-line"></div>
+              <div class="mock-quote-line"></div>
+            </div>
+          </div>
+
+          <!-- Right: Bento -->
+          <div class="bento-grid">
+            <div class="bento-1">
+              <div style="width:100%; height:100%; background: linear-gradient(135deg, #1a1f45, #0a0e2e); display:flex; align-items:center; justify-content:center;">
+                <div style="color: rgba(201,168,76,0.3); font-size: 28px;">👤</div>
+              </div>
+              <div class="bento-overlay">
+                <span class="bento-tag-pill">Main Photo</span>
+              </div>
+            </div>
+            <div class="bento-2">
+              <div style="width:100%; height:100%; background: linear-gradient(135deg, #111530, #1a1f45); display:flex; align-items:center; justify-content:center;">
+                <div style="color: rgba(201,168,76,0.3); font-size: 18px;">📸</div>
+              </div>
+            </div>
+            <div class="bento-3">
+              <div style="width:100%; height:100%; background: linear-gradient(135deg, #0a0e2e, #111530); display:flex; align-items:center; justify-content:center;">
+                <div style="color: rgba(201,168,76,0.3); font-size: 18px;">📸</div>
+              </div>
+              <div class="bento-overlay">
+                <span class="bento-tag-pill">70 Years</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What's In The Section -->
+  <div class="section">
+    <div class="sec-head">What's In This Section</div>
+    <div class="sec-body">
+      <div style="display: flex; gap: 16px;">
+        <div style="flex: 1;">
+          <div style="font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.04em;">Left Column — Text</div>
+          <div style="font-size: 12px; color: var(--color-text-secondary); line-height: 1.8;">
+            Small gold label: "About the Celebrant"<br>
+            Big heading: "Solomon Olusegun Ojo" in Cormorant Garamond<br>
+            Nickname: "Big Daddy" in gold italic<br>
+            Gold ornamental divider line<br>
+            2–3 sentences warm description<br>
+            Blockquote: a personal quote or message in gold border-left style
+          </div>
+        </div>
+        <div style="width: 0.5px; background: var(--color-border-tertiary);"></div>
+        <div style="flex: 1;">
+          <div style="font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.04em;">Right Column — Bento Grid</div>
+          <div style="font-size: 12px; color: var(--color-text-secondary); line-height: 1.8;">
+            Photo 1: Large, spans full left column of bento — main portrait photo<br>
+            Photo 2: Top right of bento — candid/lifestyle shot<br>
+            Photo 3: Bottom right of bento — with family or celebration<br>
+            All photos: gold border on hover, slight zoom on hover<br>
+            Bento cells have rounded corners (16px), gap between them
+          </div>
+        </div>
+      </div>
+      <div class="note">On mobile: bento grid stacks below text. Photos go full width, one per row.</div>
+    </div>
+  </div>
+
+  <!-- Animations -->
+  <div class="section">
+    <div class="sec-head">Animation Plan — Scroll Triggered</div>
+    <div class="sec-body">
+      <div class="anim-item">
+        <div class="anim-num">1</div>
+        <div class="anim-content">
+          <div class="anim-title">Section label + heading slides in from left</div>
+          <div class="anim-desc">The "About the Celebrant" label and the big name heading slide in from x:-40 to x:0, fading in. The nickname "Big Daddy" follows 0.15s after with the same motion.</div>
+          <div class="anim-timing">Trigger: whileInView · initial: x:-40, opacity:0 · animate: x:0, opacity:1 · duration: 0.6s</div>
+        </div>
+      </div>
+      <div class="anim-item">
+        <div class="anim-num">2</div>
+        <div class="anim-content">
+          <div class="anim-title">Gold divider line draws itself</div>
+          <div class="anim-desc">The ornamental gold divider line between the heading and description animates its width from 0 to full — like it's being drawn across the page. Elegant and satisfying.</div>
+          <div class="anim-timing">Trigger: after heading · initial: scaleX:0, originX: left · animate: scaleX:1 · duration: 0.8s · easing: ease-out</div>
+        </div>
+      </div>
+      <div class="anim-item">
+        <div class="anim-num">3</div>
+        <div class="anim-content">
+          <div class="anim-title">Description text fades up</div>
+          <div class="anim-desc">The body description paragraphs fade in and drift up (y:15→0). Then the blockquote follows with a 0.2s delay, sliding in from slightly below.</div>
+          <div class="anim-timing">Trigger: whileInView · initial: y:15, opacity:0 · animate: y:0, opacity:1 · duration: 0.5s · delay: 0.2s after divider</div>
+        </div>
+      </div>
+      <div class="anim-item">
+        <div class="anim-num">4</div>
+        <div class="anim-content">
+          <div class="anim-title">Bento photos cascade in from right</div>
+          <div class="anim-desc">The three bento photos animate in one by one — Photo 1 (large left) appears first, then Photo 2 (top right), then Photo 3 (bottom right). Each slides in from x:40→0 and fades in. Stagger of 0.15s between each photo.</div>
+          <div class="anim-timing">Trigger: whileInView · initial: x:40, opacity:0 · animate: x:0, opacity:1 · stagger: 0.15s · duration: 0.5s each</div>
+        </div>
+      </div>
+      <div class="anim-item">
+        <div class="anim-num">5</div>
+        <div class="anim-content">
+          <div class="anim-title">Photo hover interactions</div>
+          <div class="anim-desc">Each bento photo on hover: scale 1→1.04 (zoom in slightly) + gold border glows (box-shadow: 0 0 0 2px #c9a84c). Smooth transition 0.3s. On mobile: no hover — just static with gold borders.</div>
+          <div class="anim-timing">Framer Motion whileHover · scale: 1.04 · transition: 0.3s ease</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Prompt -->
+  <div class="section">
+    <div class="sec-head">The Prompt — Copy & Paste Into Claude</div>
+    <div class="sec-body">
+      <div class="prompt-box"><span class="highlight">You are building Section 02 (About Him) of the birthday website.</span> Refer to the project brief already provided for colors, fonts, and design system. Build this as a standalone React component called AboutSection.
+
+<span class="highlight">LAYOUT:</span>
+Two-column layout (50/50 on desktop). Left column: text content. Right column: bento photo grid. Full-width section with bg color #0a0e2e, generous vertical padding (py-24).
+
+<span class="highlight">LEFT COLUMN — TEXT CONTENT:</span>
+— Small uppercase gold label at top: "About the Celebrant" (Inter, 12px, #c9a84c, letter-spacing: 0.1em)
+— Large heading: "Solomon Olusegun Ojo" (Cormorant Garamond, clamp 36px–56px, color: #f5e6c0)
+— Nickname below heading: "Big Daddy" (Cormorant Garamond italic, 24px, color: #c9a84c)
+— Gold ornamental divider: a thin horizontal line (2px height, bg: #c9a84c, width: 60px, my-6)
+— Description paragraph (Inter, 16px, color: rgba(245,230,192,0.8), line-height: 1.8):
+  Placeholder: "A man of grace, wisdom, and boundless love. For seven decades, Solomon Olusegun Ojo has been the rock of his family — a father, a leader, and an inspiration to all who know him."
+— Blockquote below paragraph: gold left border (border-left: 3px solid #c9a84c), padding-left: 16px, italic text in Cormorant Garamond, color: #c9a84c:
+  Placeholder quote: "Seventy years of grace, and still counting."
+
+<span class="highlight">RIGHT COLUMN — BENTO GRID:</span>
+CSS Grid layout: 2 columns, 2 rows. Gap: 12px. Border-radius on each cell: 16px. Total height: 480px on desktop.
+
+Grid structure:
+— Photo 1: grid-column: 1, grid-row: 1/3 (spans full height on left). Tall portrait photo. Use placeholder: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400
+— Photo 2: grid-column: 2, grid-row: 1. Square-ish top right. Use placeholder: https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300
+— Photo 3: grid-column: 2, grid-row: 2. Square-ish bottom right. Add a small gold pill overlay bottom-left: "70 Years". Use placeholder: https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300
+
+All photos: object-fit cover, border: 1px solid rgba(201,168,76,0.2), overflow: hidden.
+
+<span class="highlight">ANIMATIONS (all use Framer Motion whileInView, viewport once: true):</span>
+
+Step 1 — Label + heading (x:-40→0, opacity:0→1, duration:0.6s, ease:easeOut)
+Step 2 — Gold divider draws itself (scaleX:0→1, transformOrigin:left, duration:0.8s, delay:0.3s)
+Step 3 — Description + blockquote (y:15→0, opacity:0→1, duration:0.5s, delay:0.5s)
+Step 4 — Bento photos cascade in from right (x:40→0, opacity:0→1, staggerChildren:0.15s, duration:0.5s each). Photo 1 first, then Photo 2, then Photo 3.
+Step 5 — Photo hover: whileHover scale:1.04, transition 0.3s. Add CSS: box-shadow: 0 0 0 2px #c9a84c on hover via Tailwind group-hover or inline style.
+
+<span class="highlight">MOBILE RESPONSIVE:</span>
+— Below md breakpoint: single column. Text on top, bento grid below.
+— Bento grid on mobile: 2 columns, all 3 photos equal height (150px each). Photo 1 spans both columns on top row.
+— Reduce font sizes proportionally.
+
+<span class="highlight">IMPORTANT:</span>
+— Export as default: AboutSection
+— Use placeholder content and images — all swappable later
+— Do not add other sections
+— Background: #0a0e2e, no white cards anywhere</div>
+      <div class="copy-hint">Paste after your project brief in a new Claude message</div>
+    </div>
+  </div>
+
+</div>

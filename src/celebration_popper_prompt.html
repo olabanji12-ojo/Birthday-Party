@@ -1,0 +1,151 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.doc { max-width: 660px; margin: 0 auto; padding: 1.5rem 1rem 3rem; font-family: var(--font-sans); }
+.header { background: #0a0e2e; border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; border: 0.5px solid #c9a84c; display: flex; align-items: center; justify-content: space-between; }
+.header h1 { color: #c9a84c; font-size: 15px; font-weight: 500; }
+.header p { color: #a89060; font-size: 12px; margin-top: 3px; }
+.badge { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 99px; background: rgba(201,168,76,0.15); color: #c9a84c; border: 0.5px solid #c9a84c; white-space: nowrap; }
+.section { margin-bottom: 1.25rem; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+.sec-head { background: var(--color-background-secondary); padding: 9px 16px; font-size: 12px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.sec-body { padding: 14px 16px; }
+.trigger { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.trigger:last-child { border-bottom: none; padding-bottom: 0; }
+.trigger-icon { width: 32px; height: 32px; border-radius: 50%; background: #0a0e2e; border: 0.5px solid #c9a84c; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.trigger-content { flex: 1; }
+.trigger-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+.trigger-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 5px; }
+.tag { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 99px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); background: var(--color-background-secondary); margin: 2px 2px 0 0; }
+.prompt-box { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; font-size: 13px; color: var(--color-text-primary); line-height: 1.8; white-space: pre-wrap; word-break: break-word; }
+.highlight { color: #c9a84c; font-weight: 500; }
+.copy-hint { font-size: 12px; color: var(--color-text-tertiary); margin-top: 8px; text-align: right; }
+.note { background: var(--color-background-info); border-radius: var(--border-radius-md); padding: 10px 14px; font-size: 12px; color: var(--color-text-info); margin-top: 10px; }
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 10px 0; }
+</style>
+
+<div class="doc">
+
+  <div class="header">
+    <div>
+      <h1>Celebration Popper Effect — Animation Prompt</h1>
+      <p>2 trigger moments · Hero @70 stamp + RSVP submit · Option C</p>
+    </div>
+    <span class="badge">Add-on</span>
+  </div>
+
+  <!-- Two Triggers -->
+  <div class="section">
+    <div class="sec-head">Two Trigger Moments</div>
+    <div class="sec-body">
+
+      <div class="trigger">
+        <div class="trigger-icon">🎉</div>
+        <div class="trigger-content">
+          <div class="trigger-title">Trigger 1 — @70 Stamps In (Hero Section)</div>
+          <div class="trigger-desc">The exact moment "@70" finishes its scale-stamp animation, two celebration poppers fire simultaneously from the bottom-left and bottom-right corners of the screen. Confetti + streamers shoot upward in an arc toward the center. Colors match the palette: gold (#c9a84c), white (#ffffff), deep gold (#e8c96d), and cream (#f5e6c0). Effect lasts ~2.5 seconds then all particles fade out. Does not repeat.</div>
+          <div><span class="tag">tsParticles cannon</span><span class="tag">origin: bottom-left + bottom-right</span><span class="tag">one-shot burst</span><span class="tag">triggered by animation callback</span></div>
+        </div>
+      </div>
+
+      <div class="trigger">
+        <div class="trigger-icon">✅</div>
+        <div class="trigger-content">
+          <div class="trigger-title">Trigger 2 — RSVP Form Submitted (RSVP Section)</div>
+          <div class="trigger-desc">When the guest clicks the RSVP submit button and the form submission succeeds, the same celebration popper fires again. This time add a wider spread — poppers from both bottom corners AND one from the top-center raining down. Slightly more particles than Trigger 1. A success message ("You're on the list! 🎊") fades in below the form after the animation. Effect lasts ~3 seconds.</div>
+          <div><span class="tag">tsParticles cannon</span><span class="tag">3 origins: bottom-left, bottom-right, top-center</span><span class="tag">more particles than trigger 1</span><span class="tag">triggered by form onSuccess callback</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- The Prompt -->
+  <div class="section">
+    <div class="sec-head">The Prompt — Add This To Your Hero Prompt</div>
+    <div class="sec-body">
+      <div class="prompt-box"><span class="highlight">CELEBRATION POPPER EFFECT — ADD TO HERO + RSVP SECTIONS</span>
+
+This is an add-on animation that fires at two specific trigger moments across the site. Implement it as a reusable utility function called <span class="highlight">firePoppers(origin)</span> that can be called from anywhere in the app.
+
+<span class="highlight">LIBRARY:</span> Use tsParticles confetti cannon via @tsparticles/confetti or the confetti() helper from the tsparticles bundle. Do NOT use canvas-confetti — use tsParticles to stay consistent with the rest of the animation stack.
+
+<span class="highlight">THE firePoppers FUNCTION:</span>
+Create a reusable function that accepts an origin parameter: "hero" or "rsvp". Export it so both HeroSection and RSVPSection can import and call it.
+
+<span class="highlight">TRIGGER 1 — Hero (@70 stamp moment):</span>
+Call firePoppers("hero") inside the Framer Motion onAnimationComplete callback of the @70 element — fires the instant the stamp animation finishes.
+
+Config:
+— Two simultaneous bursts: origin {x: 0.1, y: 1.0} (bottom-left) and {x: 0.9, y: 1.0} (bottom-right)
+— Particle count: 80 per cannon (160 total)
+— Colors: ["#c9a84c", "#e8c96d", "#f5e6c0", "#ffffff"]
+— Spread: 70 degrees
+— Velocity: 45
+— Gravity: 1.2
+— Shapes: mix of squares and circles (confetti + streamers feel)
+— Ticks: 200 (particles last ~2.5 seconds before fading)
+— Scalar: 1.1
+— Do NOT loop — one shot only
+
+<span class="highlight">TRIGGER 2 — RSVP Form Submit:</span>
+Call firePoppers("rsvp") inside the form's onSubmit success handler, after the API/form response confirms success.
+
+Config (bigger than Trigger 1):
+— Three simultaneous bursts:
+  · {x: 0.1, y: 1.0} bottom-left
+  · {x: 0.9, y: 1.0} bottom-right
+  · {x: 0.5, y: 0.0} top-center (rains DOWN — use angle: 270, gravity: 0.8)
+— Particle count: 120 per bottom cannon, 60 from top (300 total)
+— Colors: ["#c9a84c", "#e8c96d", "#f5e6c0", "#ffffff", "#0a0e2e"]
+— Spread: 80 degrees (bottom), 120 degrees (top)
+— Velocity: 50
+— Ticks: 280 (lasts ~3 seconds)
+— Shapes: squares, circles, and lines (more variety)
+— Do NOT loop — one shot only
+
+<span class="highlight">SUCCESS MESSAGE AFTER RSVP POPPER:</span>
+After firePoppers("rsvp") fires, show a Framer Motion animated success message below the form:
+— Text: "You're on the list! See you on October 17th 🎊"
+— Animate: opacity 0→1, y 20→0, duration 0.6s, delay 0.3s
+— Style: gold text (#c9a84c), Playfair Display font, centered, text-lg
+
+<span class="highlight">IMPORTANT NOTES:</span>
+— firePoppers must be a standalone utility (utils/firePoppers.js) importable anywhere
+— Particles must render on top of ALL page content (z-index highest)
+— On mobile, reduce particle count by 40% to preserve performance
+— The tsParticles container for poppers must be separate from the ambient bokeh particle container in the Hero — use different container IDs
+— Both triggers are one-shot: they fire once and never repeat unless the page reloads (Trigger 1) or a new form is submitted (Trigger 2)</div>
+      <div class="copy-hint">Paste this AFTER your hero animation prompt in the same Claude message</div>
+    </div>
+  </div>
+
+  <!-- How to use -->
+  <div class="section">
+    <div class="sec-head">How To Use Both Prompts Together</div>
+    <div class="sec-body">
+      <div class="trigger">
+        <div class="trigger-icon" style="font-size: 12px; color: #c9a84c; font-weight: 500;">01</div>
+        <div class="trigger-content">
+          <div class="trigger-title">Paste project brief first</div>
+          <div class="trigger-desc">The full brief you already have — sets the context, colors, stack, everything.</div>
+        </div>
+      </div>
+      <div class="trigger">
+        <div class="trigger-icon" style="font-size: 12px; color: #c9a84c; font-weight: 500;">02</div>
+        <div class="trigger-content">
+          <div class="trigger-title">Paste the Hero animation prompt</div>
+          <div class="trigger-desc">The 7-step cinematic sequence we already drafted — background, particles, name reveal, @70 stamp, countdown, RSVP button.</div>
+        </div>
+      </div>
+      <div class="trigger">
+        <div class="trigger-icon" style="font-size: 12px; color: #c9a84c; font-weight: 500;">03</div>
+        <div class="trigger-content">
+          <div class="trigger-title">Paste this celebration popper prompt immediately after</div>
+          <div class="trigger-desc">Claude will read both together and build the Hero with the popper already wired up to the @70 stamp. The RSVP popper gets added when you build Section 06.</div>
+        </div>
+      </div>
+      <div class="note">Both prompts together in one message = Claude builds everything in one shot. No need to go back and add the popper separately. 🚀</div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,185 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.brief { max-width: 660px; margin: 0 auto; padding: 1.5rem 1rem 3rem; font-family: var(--font-sans); }
+.brief-header { background: #0a0e2e; border-radius: var(--border-radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; text-align: center; border: 0.5px solid #c9a84c; }
+.brief-header h1 { color: #c9a84c; font-size: 18px; font-weight: 500; margin-bottom: 4px; }
+.brief-header p { color: #a89060; font-size: 13px; }
+.section { margin-bottom: 1.5rem; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+.section-title { background: var(--color-background-secondary); padding: 10px 16px; font-size: 13px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.section-body { padding: 14px 16px; }
+.row { display: flex; gap: 8px; margin-bottom: 8px; align-items: flex-start; }
+.row:last-child { margin-bottom: 0; }
+.label { font-size: 12px; color: var(--color-text-tertiary); min-width: 110px; padding-top: 2px; flex-shrink: 0; }
+.value { font-size: 13px; color: var(--color-text-primary); line-height: 1.6; }
+.tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 99px; margin: 2px 3px 2px 0; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); background: var(--color-background-secondary); }
+.gold-tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 99px; margin: 2px 3px 2px 0; background: #0a0e2e; color: #c9a84c; border: 0.5px solid #c9a84c; }
+.section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-border-tertiary); }
+.section-grid > * { background: var(--color-background-primary); padding: 12px 14px; }
+.sec-num { font-size: 20px; font-weight: 500; color: #c9a84c; margin-bottom: 2px; }
+.sec-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.sec-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 6px; }
+.sec-anim { font-size: 11px; color: var(--color-text-tertiary); font-style: italic; }
+.anim-badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 99px; background: var(--color-background-info); color: var(--color-text-info); margin: 2px 3px 2px 0; }
+.color-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.swatch { width: 28px; height: 28px; border-radius: 6px; border: 0.5px solid var(--color-border-secondary); flex-shrink: 0; }
+.swatch-label { font-size: 11px; color: var(--color-text-secondary); margin-top: 3px; text-align: center; }
+.swatch-group { display: flex; flex-direction: column; align-items: center; }
+.code-block { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 14px; font-family: var(--font-mono); font-size: 12px; color: var(--color-text-primary); line-height: 1.8; border: 0.5px solid var(--color-border-tertiary); }
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 10px 0; }
+</style>
+
+<div class="brief">
+
+  <div class="brief-header">
+    <h1>Solomon Olusegun Ojo @70 — Birthday Website</h1>
+    <p>Project Brief · React + Tailwind · Framer Motion · tsParticles</p>
+  </div>
+
+  <!-- Overview -->
+  <div class="section">
+    <div class="section-title">Project Overview</div>
+    <div class="section-body">
+      <div class="row"><span class="label">What we're building</span><span class="value">A single-page birthday celebration website for Solomon Olusegun Ojo's 70th birthday party. Design-first, beauty-focused, minimal functionality.</span></div>
+      <div class="row"><span class="label">Primary goal</span><span class="value">Impress guests visually, collect RSVPs, share event details. The design IS the product.</span></div>
+      <div class="row"><span class="label">Target audience</span><span class="value">Family and invited guests, primarily on mobile (WhatsApp link share)</span></div>
+      <div class="row"><span class="label">Stack</span><span class="value"><span class="tag">React</span><span class="tag">Tailwind CSS</span><span class="tag">Framer Motion</span><span class="tag">tsParticles</span></span></div>
+      <div class="row"><span class="label">Event date</span><span class="value">October 17 · Lagos Country Club</span></div>
+      <div class="row"><span class="label">RSVP deadline</span><span class="value">May 31st · Contact: Olumide Ojo — 0810 008 9497</span></div>
+    </div>
+  </div>
+
+  <!-- Design System -->
+  <div class="section">
+    <div class="section-title">Design System</div>
+    <div class="section-body">
+      <div class="row"><span class="label">Overall vibe</span><span class="value">Luxury vibrant — cinematic dark background with explosive gold accents. Think Met Gala meets Lagos owambe.</span></div>
+      <div class="divider"></div>
+      <div class="row"><span class="label">Color palette</span>
+        <div>
+          <div class="color-row" style="margin-bottom: 8px;">
+            <div class="swatch-group"><div class="swatch" style="background:#0a0e2e;"></div><div class="swatch-label">#0a0e2e</div></div>
+            <div class="swatch-group"><div class="swatch" style="background:#111530;"></div><div class="swatch-label">#111530</div></div>
+            <div class="swatch-group"><div class="swatch" style="background:#1a1f45;"></div><div class="swatch-label">#1a1f45</div></div>
+            <div class="swatch-group"><div class="swatch" style="background:#c9a84c;"></div><div class="swatch-label">#c9a84c</div></div>
+            <div class="swatch-group"><div class="swatch" style="background:#e8c96d;"></div><div class="swatch-label">#e8c96d</div></div>
+            <div class="swatch-group"><div class="swatch" style="background:#f5e6c0;"></div><div class="swatch-label">#f5e6c0</div></div>
+            <div class="swatch-group"><div class="swatch" style="background:#ffffff;"></div><div class="swatch-label">#ffffff</div></div>
+          </div>
+          <div style="font-size: 12px; color: var(--color-text-tertiary);">Navy (backgrounds) → Gold (accents, headings) → White (body text)</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="row"><span class="label">Typography</span>
+        <div>
+          <div class="value" style="margin-bottom: 4px;"><span class="gold-tag">Cormorant Garamond</span> — Hero headings, celebrant name, big numbers</div>
+          <div class="value" style="margin-bottom: 4px;"><span class="gold-tag">Playfair Display</span> — Section headings, decorative text</div>
+          <div class="value"><span class="gold-tag">Inter</span> — Body text, form labels, UI elements</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="row"><span class="label">Background texture</span><span class="value">Gold bokeh/sparkle particle effect using tsParticles — matches the flyer aesthetic exactly</span></div>
+      <div class="row"><span class="label">Card style</span><span class="value">Dark navy cards with 1px gold border, slight transparency. No white cards.</span></div>
+      <div class="row"><span class="label">Design references</span><span class="value">① Flyer: navy + gold palette, ornamental borders, bokeh · ② Music festival landing page: hero layout, countdown placement, gallery section, breathing space</span></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="section">
+    <div class="section-title">Navigation</div>
+    <div class="section-body">
+      <div class="row"><span class="label">Navbar style</span><span class="value">Option B + C combined</span></div>
+      <div class="row"><span class="label">Sticky top bar</span><span class="value">Very slim, semi-transparent navy, gold border bottom. Left: celebrant initials "SOO". Right: one gold "RSVP" button. Appears after hero scroll.</span></div>
+      <div class="row"><span class="label">Dot navigation</span><span class="value">Small gold dots on right edge of screen. One dot per section. Active dot glows/fills gold. Clicking jumps to section smoothly.</span></div>
+    </div>
+  </div>
+
+  <!-- Animation System -->
+  <div class="section">
+    <div class="section-title">Animation System</div>
+    <div class="section-body">
+      <div class="row"><span class="label">Page load</span><span class="value">Gold confetti + sparkle explosion bursts from center using tsParticles. Then hero content fades/drops in dramatically.</span></div>
+      <div class="row"><span class="label">Scroll trigger</span><span class="value">All sections use Framer Motion <span class="tag">whileInView</span> with <span class="tag">viewport once: true</span></span></div>
+      <div class="row"><span class="label">Entrance style</span><span class="value">Elements slide up + fade in. Cards use stagger delay (0.1s apart). Nothing pops in too fast.</span></div>
+      <div class="row"><span class="label">RSVP submit</span><span class="value">Confetti burst fires on successful form submission using tsParticles</span></div>
+      <div class="row"><span class="label">Countdown</span><span class="value">Live ticking. Each number flip uses a subtle scale animation.</span></div>
+      <div class="row"><span class="label">Library</span><span class="value"><span class="anim-badge">Framer Motion</span> for all scroll + entrance animations · <span class="anim-badge">tsParticles</span> for confetti/bokeh effects</span></div>
+    </div>
+  </div>
+
+  <!-- Page Sections -->
+  <div class="section">
+    <div class="section-title">Page Sections — Build Order</div>
+    <div class="section-grid">
+      <div>
+        <div class="sec-num">01</div>
+        <div class="sec-name">Hero</div>
+        <div class="sec-desc">Full screen. Celebrant photo bg. "You are cordially invited" small top. Name massive centered. @70 in gold. Live countdown. RSVP CTA button.</div>
+        <div class="sec-anim">tsParticles confetti on load · cinematic fade-in · name drops like movie title</div>
+      </div>
+      <div>
+        <div class="sec-num">02</div>
+        <div class="sec-name">About Him</div>
+        <div class="sec-desc">Two column. Photo left, warm description right. Nickname prominent. Short quote or message. Gold divider line.</div>
+        <div class="sec-anim">Photo zoom-in · text slides up on scroll</div>
+      </div>
+      <div>
+        <div class="sec-num">03</div>
+        <div class="sec-name">Event Details</div>
+        <div class="sec-desc">3 gold-bordered cards. Date / Time / Venue. Gold icons. Google Maps embed below cards.</div>
+        <div class="sec-anim">Cards stagger in left to right · 0.1s delay each</div>
+      </div>
+      <div>
+        <div class="sec-num">04</div>
+        <div class="sec-name">Dress Code / Theme</div>
+        <div class="sec-desc">Full-width visual strip. Navy + gold swatches. "Dress to impress" heading. Theme name prominent.</div>
+        <div class="sec-anim">Sweep animation left to right on scroll</div>
+      </div>
+      <div>
+        <div class="sec-num">05</div>
+        <div class="sec-name">Photo Gallery</div>
+        <div class="sec-desc">Masonry or grid layout. Celebrant photos cascade in. Hover: slight zoom + gold border glow.</div>
+        <div class="sec-anim">Photos cascade in like dealt cards · stagger delay</div>
+      </div>
+      <div>
+        <div class="sec-num">06</div>
+        <div class="sec-name">RSVP Form</div>
+        <div class="sec-desc">Dark section, gold accents. Clean inputs with gold focus border. Big gold submit button. Success state with confetti.</div>
+        <div class="sec-anim">Fields slide up · confetti burst on submit</div>
+      </div>
+      <div style="grid-column: span 2;">
+        <div class="sec-num">07</div>
+        <div class="sec-name">Gift + Footer</div>
+        <div class="sec-desc">Bank details in a clean gold-bordered card. Contact person info. Closing message matching flyer: "Thank You!" in script font. Ornamental divider.</div>
+        <div class="sec-anim">Gentle fade in · no aggressive animation here</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Placeholder Content -->
+  <div class="section">
+    <div class="section-title">Placeholder Content (Build Now, Swap Later)</div>
+    <div class="section-body">
+      <div class="row"><span class="label">Celebrant name</span><span class="value">Solomon Olusegun Ojo</span></div>
+      <div class="row"><span class="label">Age</span><span class="value">70</span></div>
+      <div class="row"><span class="label">Event date</span><span class="value">October 17, 2025</span></div>
+      <div class="row"><span class="label">Venue</span><span class="value">Lagos Country Club</span></div>
+      <div class="row"><span class="label">RSVP deadline</span><span class="value">May 31st</span></div>
+      <div class="row"><span class="label">Contact</span><span class="value">Olumide Ojo · 0810 008 9497 · Titilayo · +234 35074629</span></div>
+      <div class="row"><span class="label">Photos</span><span class="value">Use high-quality placeholder images (unsplash.com). Swap with real photos when client sends them.</span></div>
+      <div class="row"><span class="label">Description</span><span class="value">"A man of grace, wisdom, and boundless love — celebrating 70 remarkable years." (swap when client sends real text)</span></div>
+    </div>
+  </div>
+
+  <!-- Instructions -->
+  <div class="section">
+    <div class="section-title">How To Use This Brief</div>
+    <div class="section-body">
+      <div class="row"><span class="label">Step 1</span><span class="value">Paste this full brief at the start of every new Claude conversation for this project</span></div>
+      <div class="row"><span class="label">Step 2</span><span class="value">Then say: "Using this brief, build Section 01 — Hero" (or whichever section you're on)</span></div>
+      <div class="row"><span class="label">Step 3</span><span class="value">Build one section at a time. Review, approve, then move to next section.</span></div>
+      <div class="row"><span class="label">Step 4</span><span class="value">When all sections are done, ask Claude to assemble them into one complete page.</span></div>
+    </div>
+  </div>
+
+</div>
