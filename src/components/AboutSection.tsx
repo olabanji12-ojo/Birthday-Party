@@ -103,13 +103,21 @@ const AboutSection = () => {
           {/* Description */}
           <motion.p
             variants={textFadeUpVariants}
-            className="font-inter text-gray-700 dark:text-brand-gold-pale/80 transition-colors duration-500 text-base md:text-lg leading-relaxed mb-8"
+            className="font-inter text-gray-700 dark:text-brand-gold-pale/80 transition-colors duration-500 text-base md:text-lg leading-relaxed mb-6"
           >
             A man of grace, wisdom, and boundless love. For seven decades, Solomon Olusegun Ojo
-            has been the rock of his family, a husband, father, grandpa, brother, uncle, man of integrity, and an inspiration to all who know him.
+            has been the rock of his family, a husband, father, grandpa, brother, uncle, and an inspiration to all who know him.
             His life is a testament to the power of faith, resilience, and the enduring strength of
             kindness across generations.
           </motion.p>
+
+          {/* Bold Subheading */}
+          <motion.h3
+            variants={textFadeUpVariants}
+            className="font-cormorant font-bold text-brand-navy dark:text-brand-gold text-2xl md:text-3xl tracking-wide mb-8 uppercase"
+          >
+            A Man of Integrity
+          </motion.h3>
 
           {/* Blockquote */}
           <motion.div
