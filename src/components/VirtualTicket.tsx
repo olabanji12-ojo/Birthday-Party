@@ -106,7 +106,7 @@ const VirtualTicket = ({ guestName = "", ticketId = "", isBlank = false }: Ticke
           Mr. Solomon Olusegun Ojo
         </h2>
         <p className="text-[#c9a84c] font-cormorant italic text-[11px] font-semibold tracking-wide mt-1">
-          Our beloved husband, father, grandpa, brother, uncle & man of integrity
+          Our beloved husband, father, grandpa, brother, uncle & friend
         </p>
       </div>
 
