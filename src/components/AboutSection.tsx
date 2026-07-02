@@ -105,8 +105,8 @@ const AboutSection = () => {
             variants={textFadeUpVariants}
             className="font-inter text-gray-700 dark:text-brand-gold-pale/80 transition-colors duration-500 text-base md:text-lg leading-relaxed mb-8"
           >
-            A man of integrity, grace, wisdom, and boundless love. For seven decades, Solomon Olusegun Ojo
-            has been the rock of his family — a father, a leader, and an inspiration to all who know him.
+            A man of grace, wisdom, and boundless love. For seven decades, Solomon Olusegun Ojo
+            has been the rock of his family — a husband, father, grandpa, brother, uncle, man of integrity, and an inspiration to all who know him.
             His life is a testament to the power of faith, resilience, and the enduring strength of
             kindness across generations.
           </motion.p>
