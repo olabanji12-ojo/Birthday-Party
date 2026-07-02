@@ -75,8 +75,10 @@
 **File:** `src/components/AboutSection.tsx`
 
 ```diff
-- A man of grace, wisdom, and boundless love...
-+ A man of integrity, grace, wisdom, and boundless love...
+-            A man of integrity, grace, wisdom, and boundless love. For seven decades, Solomon Olusegun Ojo
+-            has been the rock of his family — a father, a leader, and an inspiration to all who know him.
++            A man of grace, wisdom, and boundless love. For seven decades, Solomon Olusegun Ojo
++            has been the rock of his family — a husband, father, grandpa, brother, uncle, man of integrity, and an inspiration to all who know him.
 ```
 
 ---
